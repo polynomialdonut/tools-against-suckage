@@ -1,20 +1,33 @@
 #!/bin/bash
 #
-#    PDF split print - Split up a PDF into chunks and print them.
+#    PDF Split Print - Split up a PDF into chunks and print them.
 #    Copyright (C) 2017  Alexander Rehbein
 #
-#    This program is free software: you can redistribute it and/or modify
+#    MAIN LICENSE:
+#    The following text between the dashed lines applies to the code in
+#    this file, *except for snippets marked as belonging to a license other than
+#    the GNU Lesser General Public License* (for which that other license is
+#    valid).
+#    ---------------------------------------------------------------------------
+#    This code is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Lesser General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
 #
-#    This program is distributed in the hope that it will be useful,
+#    This code is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU Lesser General Public License for more details.
 #
 #    You should have received a copy of the GNU Lesser General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#    along with this code. If not, see <http://www.gnu.org/licenses/>.
+#    ---------------------------------------------------------------------------
+#
+#    OTHER LICENSES USED IN THIS FILE:
+#    [1] This work is licensed under the Creative Commons Attribution-ShareAlike
+#        3.0 Unported License. To view a copy of this license, visit
+#        http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to
+#        Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 #
 #    Author: Alexander Rehbein, rehbein.alexander@gmail.com
 
@@ -113,6 +126,11 @@ leftover_chunksize=$((whole_chunks % chunk_size))
 filename_no_suffix=${pdf_input_file%.pdf}
 
 # Create files that constitute the splitting
+
+# License [1] applies from here. The original work can be found at
+# http://unix.stackexchange.com/questions/66931/split-pdf-into-documents-with-several-pages-each/66966
+# Minor changes have been made: A small bugfix that accounts for odd pdf file sizes and a
+# check for the return value of pdftk, some variables have been renamed.
 declare -a pdf_splitting
 counter=0
 pdftk_return_value=0
@@ -133,6 +151,7 @@ if [[ $leftover_chunksize -ne 0 ]]; then
 	pdftk "$pdf_input_file" cat "${start}-${end}" output "${pdf_splitting[$counter]}"
 	pdftk_return_value=$?
 fi
+# License [1] applies until former line
 
 if [[ $dry_run == true ]]; then
 	echo "Splitting files saved to $default_dir" 
