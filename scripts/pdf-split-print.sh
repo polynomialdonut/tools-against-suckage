@@ -168,7 +168,8 @@ else
 	# Print first paper with job sheet
 	lpr -P $printer -o sides=two-sided-long-edge $lpr_options "${pdf_splitting[0]}"
 	for ((i=1; i<${#pdf_splitting[@]}; ++i)); do
-		lpr -P $printer -o job-sheets=none -o media=A4 -o sides=two-sided-long-edge $lpr_options "${pdf_splitting[$i]}"
+		lpr -P $printer -o job-sheets=none -o media=A4 -o sides=two-sided-long-edge\
+			$lpr_options "${pdf_splitting[$i]}"
 	done;
 	for ((i=0; i<${#pdf_splitting[@]}; ++i)); do
 		rm "${pdf_splitting[$i]}" > /dev/null 2>&1
