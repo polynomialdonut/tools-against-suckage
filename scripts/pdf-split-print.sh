@@ -75,7 +75,7 @@ while getopts ":hHn" opt; do
 			exit 1
 		;;
 	esac
-done
+done <&2
 
 shift $(($OPTIND -1))
 
