@@ -1,4 +1,4 @@
 # tools-against-suckage
-Small/simple tools to circumvent shortcomings of things one cannot change, possibly introducing suckage overhead.
+Tools to circumvent shortcomings of things one cannot change (and possibly introducing suckage overhead while doing so).
 
-Use case: Printers that don't print large files.
+Use-case example for pdf-split-print: Printers that don't print large files.
