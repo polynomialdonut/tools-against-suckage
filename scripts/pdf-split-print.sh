@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-#    PDF Split Print - Split up a PDF into chunks and print them.
+#    PDF Split Print - Split up a PDF into chunks and print them. Useful for
+#    printers that do not print large files.
+#
 #    Copyright (C) 2017  Alexander Rehbein
 #
 #    MAIN LICENSE:
