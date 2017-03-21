@@ -178,7 +178,4 @@ else
 	rmdir "$default_dir" > /dev/null 2>&1
 fi
 
-#else
-#fi
-
 unset pdf_splitting
